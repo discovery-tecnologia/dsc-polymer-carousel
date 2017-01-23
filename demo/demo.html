@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <title>dsc-polymer-carousel demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/dsc-polymer-carousel/dsc-polymer-carousel.html">
+
+  <style>
+    :host {
+      --dsc-carousel: {
+        height: var(--app-view-port-height);
+      }
+    }
+
+    dsc-carousel h1 {
+      font-size: 120px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      /*text-transform: uppercase;*/
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    dsc-carousel p {
+      font-size: 30px;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    dsc-carousel a {
+      display: inline-block;
+      /*border: var(--app-thickness) solid var(--app-primary-color);*/
+      margin: 0 auto;
+      padding: 5px 15px;
+      color: #fff;
+      background-color: var(--app-primary-color);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+    iron-icon {
+      color: #fff;
+    }
+  </style>
+
+</head>
+<body>
+
+  <h1>TESTE</h1>
+
+  <dsc-carousel interval="5">
+    <section background="demo/images/slide-1.jpg">
+      <div class="content">
+        <h1>Banner 1</h1>
+        <p>Nós construímos esta empresa, porque nós amamos o que fazemos.<br>A satisfação do cliente é a nossa prioridade nº 1</p>
+        <a href="#">Ver mais</a>
+      </div>
+    </section>
+    <section background="demo/images/slide-2.jpg">
+      <div class="content">
+        <h1>Banner 2</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <a href="#">Ver mais</a>
+      </div>
+    </section>
+  </dsc-carousel>
+
+</body>
+</html>

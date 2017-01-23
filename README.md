@@ -6,21 +6,21 @@ Comunmente utilizado no topo da página inicial de sites
 
 ## Exemplo de uso
 ```html
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../dsc_components/paralax-slider/dsc-paralax-slider.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="dsc_components/dsc-polymer-carousel/dsc-polymer-carousel.html">
 
-<dom-module id="core-home">
+<dom-module id="example-component">
 
   <template>
 
     <style>
-      dsc-paralax-slider h1 {
+      dsc-polymer-carousel h1 {
         color: red;
       }
     </style>
 
     <main>
-      <dsc-paralax-slider>
+      <dsc-polymer-carousel>
         <section background="http://localhost:8080/images/banner1.jpg">
           <div class="content">
             <h1>Banner 1</h1>
@@ -41,7 +41,7 @@ Comunmente utilizado no topo da página inicial de sites
             <a href="#">Ver mais</a>
           </div>
         </section>
-      </dsc-paralax-slider>
+      </dsc-polymer-carousel>
     </main>
 
   </template>
