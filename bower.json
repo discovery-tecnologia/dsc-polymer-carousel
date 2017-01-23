@@ -1,0 +1,30 @@
+{
+  "name": "dsc-polymer-carousel",
+  "version": "0.0.1",
+  "authors": [
+    "Discovery Tecnologia"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "Discovery",
+    "carousel",
+    "bootstrap",
+    "dsc"
+  ],
+  "main": "dsc-polymer-carousel.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/discovery-tecnologia/dsc-polymer-carousel"
+  },
+  "private": true,
+  "dependencies": {
+    "polymer": "polymer/polymer#^1.4.0",
+    "iron-icons": "PolymerElements/iron-icons#^1.2.0",
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  }
+}

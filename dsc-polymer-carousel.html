@@ -1,0 +1,309 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="dsc-carousel">
+
+  <template>
+
+    <style>
+      :host {
+        position: relative;
+        display: block;
+        background-image: var(--banner-img);
+        height: 600px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        -webkit-transition: background-image 0.3s linear;
+        transition: background-image 0.3s linear;
+        background-position: center;
+        text-align: center;
+        @apply(--dsc-carousel);
+      }
+
+      .carousel-control{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 15%;
+        opacity: .5;
+        filter: alpha(opacity=50);
+        font-size: 20px;
+        background-color: rgba(0,0,0,0);
+
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0,0,0,.6);
+        text-align: center;
+      }
+
+      @media only screen and (min-width: 768px) {
+
+        .carousel-control {
+          display: block;
+        }
+
+      }
+
+      .carousel-control:focus, .carousel-control:hover {
+        outline: 0;
+        color: #fff;
+        text-decoration: none;
+        opacity: .9;
+        filter: alpha(opacity=90);
+      }
+
+      .carousel-control.left {
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+      }
+
+      .carousel-control.right {
+        left: auto;
+        right: 0;
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+        background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+      }
+
+      .carousel-control paper-icon-button {
+        position: absolute;
+        top: 40%;
+        width: 5em;
+        height: 5em;
+      }
+
+      .carousel-control.left paper-icon-button {
+        left: 20%;
+      }
+
+      .carousel-control.right paper-icon-button {
+        right: 20%;
+      }
+
+      .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 15;
+        width: 60%;
+        margin-left: -30%;
+        padding-left: 0;
+        list-style: none;
+        text-align: center;
+      }
+
+      .carousel-indicators li {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        margin: 2px;
+        text-indent: -999px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #000;
+        background-color: rgba(0,0,0,0);
+      }
+
+      .carousel-indicators .active {
+        margin: 1px;
+        width: 12px;
+        height: 12px;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+    </style>
+
+    <div id="dsc-carousel">
+      <ol class="carousel-indicators"></ol>
+      <div class="carousel-control left">
+        <paper-icon-button on-tap="previous" icon="icons:chevron-left" title="Anterior"></paper-icon-button>
+      </div>
+      <div class="carousel-control right">
+        <paper-icon-button on-tap="next" icon="icons:chevron-right" title="Próximo"></paper-icon-button>
+      </div>
+      <div class="container">
+          <content></content>
+        </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'dsc-carousel',
+
+      properties: {
+        /**
+         * Current banner index.
+         */
+        itens: {
+          type: Array,
+          value: []
+        },
+        /**
+         * Section elements itens.
+         */
+        currentItem: {
+          type: Number,
+          value: 0
+        },
+        /**
+         * Tempo de intervalo em segundos para alternancia.
+         */
+        interval: {
+          type: Number,
+          value: 3
+        },
+         /**
+          * Timer regressivo para controle interno.
+          */
+        timer: {
+          type: Number,
+          value: 3
+        },
+        state: {
+          type: String,
+          value: 'PLAY'
+        }
+      },
+
+      /**
+       * Ao carregar o componente.
+       */
+      ready: function() {
+        // obtem todos os banners <section>
+        this.itens = this._getSections();
+        // se não existir conteudo termina
+        if (this.itens.length === 0) {
+            console.log("Nenhuma section para apresentar");
+            return;
+        }
+        // manipula conteúdo HTML
+        for (var i = 0; i < this.itens.length; i++) {
+          // adiciona um id sequencial para facilitar a manipulação futura
+          this.itens[i].setAttribute("id", "banner-" + i);
+          // adiciona indicators
+          var li = document.createElement("li"); // Create a <li> node
+          li.setAttribute("data-slide-to", i);   // Add atribute 'data-slide-to'
+          this.$$('.carousel-indicators').appendChild(li);
+        }
+        // exibe primeiro item
+        this._showItem();
+        // seta timer inicial
+        this._resetTimer();
+        // inicia o laço infinito
+        this._initTimer();
+      },
+
+      next: function() {
+        this._resetTimer();
+        this._nextItem();
+      },
+
+      previous: function() {
+        this._resetTimer();
+        this._previousItem();
+      },
+
+      /**
+       * Obtem os elementos <section>
+       */
+      _getSections: function() {
+        return Polymer.dom(this).querySelectorAll("section");
+      },
+
+      /**
+       * Oculta o conteúdo de todos os itens.
+       */
+      _hideAllContent: function() {
+        for (var i = 0; i < this.itens.length; i++) {
+          // oculta section
+          this.itens[i].style.display = 'none';
+        }
+      },
+
+      _resetTimer: function() {
+        this.timer = this.interval;
+      },
+
+      _play: function() {
+        this.state = 'PLAY';
+      },
+
+      _stop: function() {
+        this.state = 'STOP';
+      },
+
+      _pause: function() {
+        this.state = 'PAUSE';
+      },
+
+      _initTimer: function() {
+        var that = this; // Current object for event handlers;
+        // Timer em laço infinito para troca de banners
+        this.intervalTimer = setInterval(function () {
+          // só realiza alguma ação se o estado for 'PLAY'
+          if (that.state === 'PLAY') {
+            that.timer--;
+            if (that.timer === 0) {
+              that._resetTimer();
+              that._nextItem();
+            }
+          }
+        }, 1000);
+      },
+
+      /**
+       * Exibe próximo item.
+       */
+      _nextItem: function() {
+        this.currentItem = (this.currentItem === this.itens.length - 1) ? 0 : this.currentItem + 1;
+        this._showItem();
+      },
+
+      /**
+       * Exibe item anterior.
+       */
+      _previousItem: function() {
+        this.currentItem = (this.currentItem === 0) ? this.itens.length - 1 : this.currentItem - 1;
+        this._showItem();
+      },
+
+      /**
+       * Alterna exibição para o item atual pré estabelecido.
+       */
+      _showItem: function() {
+        // oculta conteudo de todos os itens
+        this._hideAllContent();
+        // mostra conteudo do item atual
+        var currentBanner = Polymer.dom(this).querySelector('#banner-' + this.currentItem);
+        currentBanner.style.display = 'block';
+        // altera o background
+        var srcImg = currentBanner.getAttribute("background");
+        this.customStyle['--banner-img'] = 'url(' + srcImg + ')';
+        // seleciona o indicator correspondente
+        var indicatorActive = this.$$('.carousel-indicators li.active');
+        if (indicatorActive !== null) {
+          indicatorActive.className = "";
+        }
+        //var newCurrentIndicator = Polymer.dom(this).querySelector('li[data-slide-to="' + this.currentItem + '"]');
+        var newCurrentIndicator = this.$$('li[data-slide-to="' + this.currentItem + '"]');
+        newCurrentIndicator.className = "active";
+        // atualiza estilos
+        Polymer.updateStyles();
+      }
+    });
+  </script>
+
+</dom-module>
