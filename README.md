@@ -68,6 +68,7 @@ The sections should be stylized in the component where they were created.
 
 ## Todo
 
+ * test
  * internationalization
  * indicators action
  * background colors
