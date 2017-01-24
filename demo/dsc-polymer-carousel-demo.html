@@ -1,0 +1,104 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../dsc-polymer-carousel.html">
+
+<dom-module id="dsc-polymer-carousel-demo">
+  <template>
+    <style>
+      :host {
+        --dsc-polymer-carousel: {
+            height: 600px;
+        }
+      }
+
+      dsc-polymer-carousel h1 {
+        font-size: 120px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 700;
+        /*text-transform: uppercase;*/
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      dsc-polymer-carousel p {
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      dsc-polymer-carousel a {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 5px 15px;
+        color: #fff;
+        background-color: #279DDA;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 20px;
+      }
+
+      iron-icon {
+        color: #fff;
+      }
+    </style>
+
+    <dsc-polymer-carousel interval="5">
+        <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
+        <div class="content">
+            <h1>Banner 1</h1>
+            <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
+            <a href="#">View more</a>
+        </div>
+        </section>
+        <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
+        <div class="content">
+            <h1>Banner 2</h1>
+            <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
+            <a href="#">View more</a>
+        </div>
+        </section>
+    </dsc-polymer-carousel>
+
+    <section id="articles">
+      <h1>Lorem Ipsum</h1>
+
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at vulputate augue, nec accumsan sapien. Nullam feugiat viverra pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean dictum sem vel ligula vulputate ullamcorper non et dui. Nunc sed mollis orci. Donec sagittis, sapien finibus cursus dictum, est libero sollicitudin tellus, eu congue nisl mi et elit. Vestibulum at lacus nisi. Curabitur sit amet elementum augue. Curabitur facilisis vehicula erat in imperdiet. Vivamus arcu felis, tristique eget vehicula quis, varius sed nisi. Nullam vitae nunc ut magna rutrum pellentesque et vitae urna. Etiam varius vulputate nibh sit amet fermentum. Proin sit amet fringilla augue, quis tristique erat. Aliquam erat volutpat.
+      </p>
+      <p>
+      Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta posuere id id arcu. Fusce rhoncus erat ut nisl pharetra, ut volutpat massa interdum. Integer ut magna augue. Sed non urna vestibulum, dictum sem porttitor, posuere odio. Nulla ac nibh rhoncus, blandit nisl eu, dapibus tellus.
+      </p>
+      <p>
+      In aliquam orci ligula, nec tempus metus laoreet eget. Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices. Pellentesque non magna commodo, mollis nunc a, mattis lectus. Ut quis pulvinar est, iaculis laoreet lorem. Nullam tincidunt neque et egestas viverra. Curabitur nec lacus lobortis dolor ornare luctus. Nulla et ante fringilla, pellentesque sapien vel, pellentesque justo. Nunc ex libero, tempor et aliquam rutrum, rhoncus a neque. Duis vulputate vitae tellus nec ultricies. Cras lectus nisi, convallis a congue eget, pharetra at dolor. Donec sed nisi iaculis, ullamcorper nulla eget, fermentum ante. Pellentesque non tincidunt est, at laoreet dolor. Sed quis eros luctus, bibendum ex ut, hendrerit ex. Nulla id ullamcorper nulla. Praesent odio sem, tristique id accumsan sit amet, fermentum eu est. Sed ultricies lorem quis condimentum sagittis.
+      </p>
+      <p>
+      Sed sollicitudin vel augue et placerat. Sed laoreet nibh sed viverra ornare. Cras nec tellus leo. Etiam condimentum malesuada sollicitudin. Nunc ac ex congue, imperdiet nulla at, porta sapien. Fusce in accumsan ligula, non dictum orci. Phasellus sed placerat erat. Maecenas mattis sit amet augue at vulputate. Vivamus vel nisl sed tellus pharetra maximus. Integer tristique nunc ut metus elementum, nec porttitor diam facilisis. Donec mattis vehicula dolor nec finibus. Aliquam vitae augue a enim porttitor tincidunt ultrices vitae orci. Fusce leo mauris, maximus eget ligula eget, lacinia ultrices turpis. Nullam sed sollicitudin dui.
+      </p>
+      <p>
+      Aenean vitae dolor ultricies, pulvinar tortor eget, rhoncus odio. Nam nec eleifend augue. Etiam porttitor faucibus ipsum id sollicitudin. Praesent accumsan, magna non vulputate laoreet, erat massa euismod nisi, in commodo quam justo ut nunc. Duis euismod, justo in pretium porta, purus sem accumsan justo, eu sodales ligula purus vitae erat. Praesent a tristique nisi. Phasellus ut pellentesque dolor. Aliquam dictum, dui eu porttitor pharetra, libero mauris congue mauris, id elementum lacus lacus pretium augue. Maecenas porttitor leo euismod varius ultricies. Aliquam sed dui id quam venenatis scelerisque sit amet ac lectus. Praesent cursus tempus lectus sit amet porttitor. Maecenas semper massa non vestibulum luctus.
+      </p>
+      <p>
+      Mauris nulla risus, tincidunt vel nibh nec, euismod consectetur augue. Sed ac aliquet lectus. Quisque sed tortor sodales, lacinia felis vitae, viverra purus. Pellentesque iaculis tortor fringilla tellus sodales, vitae dictum ex tempus. Sed massa sem, condimentum in posuere nec, condimentum at erat. In finibus, orci et tristique imperdiet, orci tortor ullamcorper dui, ut faucibus ex orci pretium tortor. Sed convallis malesuada elementum. Sed sit amet ante at nunc tempus fermentum eu in risus. Vivamus mauris tellus, placerat id placerat quis, vehicula nec ipsum.
+      </p>
+      <p>
+      Etiam faucibus urna ac augue condimentum commodo. Aliquam sit amet viverra ligula. In fermentum lobortis libero, id porta mi hendrerit ut. Nam fringilla molestie finibus. Donec aliquet semper purus porta posuere. Aliquam fermentum elementum felis, a fringilla metus blandit sit amet. Duis et nibh sit amet dui rhoncus interdum.
+      </p>
+      <p>
+      Sed convallis urna a commodo imperdiet. Fusce arcu est, vulputate sed augue nec, tristique euismod nibh. Suspendisse in egestas turpis. Nunc id ultrices sapien. Aliquam vel turpis a erat placerat ultrices. Quisque lacus nisl, volutpat at lobortis vitae, varius ut arcu. Suspendisse finibus eros mollis convallis venenatis. Etiam eget nulla eu velit rutrum ornare. Cras sed leo non nisl vestibulum consectetur molestie finibus felis. Proin sed mollis nunc. Nullam condimentum pellentesque magna. Nullam sit amet ligula nulla.
+      </p>
+      <p>
+      Pellentesque dignissim eleifend est, sed eleifend sem bibendum vel. Nunc cursus sollicitudin mollis. Suspendisse ex est, varius eget luctus nec, congue eget risus. Sed euismod ultrices viverra. Nunc ornare mi eget augue ornare, et finibus leo fringilla. Sed sit amet urna eget dui molestie facilisis. Maecenas euismod auctor nisi. Proin vitae varius magna. Mauris consectetur, quam quis iaculis hendrerit, sem nisl euismod lorem, quis semper quam justo vitae nibh. Duis dignissim fermentum lectus ut ullamcorper. Donec ante nulla, molestie sollicitudin dolor at, fermentum pulvinar ligula. Phasellus ultricies consectetur imperdiet. Nunc nec enim porttitor ligula egestas euismod sed nec purus. Pellentesque fringilla commodo lobortis. Curabitur pulvinar, elit sed venenatis sollicitudin, velit ante fringilla nulla, vel tristique nunc eros vel ligula.
+      </p>
+      <p>
+      Pellentesque quis quam ullamcorper, convallis lacus quis, blandit justo. Praesent gravida placerat condimentum. Suspendisse in leo quis mi dictum feugiat sed vel neque. Maecenas malesuada neque in enim posuere faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce in augue porttitor, bibendum justo vitae, ultricies urna. Quisque dolor neque, mattis accumsan augue pharetra, pretium hendrerit magna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam non viverra turpis, sed pulvinar velit.
+      </p>
+    </section>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: "dsc-polymer-carousel-demo"
+    });
+  </script>
+</dom-module>

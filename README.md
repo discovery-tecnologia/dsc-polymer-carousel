@@ -2,58 +2,41 @@
 
 Componente polymer para exibição de um carrossel de imagens com efeito paralax.
 
-Comunmente utilizado no topo da página inicial de sites
+Comunmente utilizado no topo da página inicial de sites.
+
+![demo](https://raw.githubusercontent.com/discovery-tecnologia/dsc-polymer-carousel/master/docs/img/carousel.jpg)
+
+## Demo
+```
+git clone https://github.com/discovery-tecnologia/dsc-polymer-carousel.git
+cd dsc-polymer-carousel
+bower install
+node install -g polymer-cli
+polymer serve
+```
+Open browser: http://localhost:8080/components/dsc-polymer-carousel/demo/
 
 ## Exemplo de uso
+
 ```html
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="dsc_components/dsc-polymer-carousel/dsc-polymer-carousel.html">
-
-<dom-module id="example-component">
-
-  <template>
-
-    <style>
-      dsc-polymer-carousel h1 {
-        color: red;
-      }
-    </style>
-
-    <main>
-      <dsc-polymer-carousel>
-        <section background="http://localhost:8080/images/banner1.jpg">
-          <div class="content">
-            <h1>Banner 1</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <a href="#">Ver mais</a>
-          </div>
-        </section>
-        <section background="http://localhost:8080/images/banner2.jpg">
-          <div class="content">
-            <h1>Banner 2</h1>
-            <a href="#">Ver mais</a>
-          </div>
-        </section>
-        <section background="http://localhost:8080/images/banner3.jpg">
-          <div class="content">
-            <h1>Banner 3</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <a href="#">Ver mais</a>
-          </div>
-        </section>
-      </dsc-polymer-carousel>
-    </main>
-
-  </template>
-
-  <script>
-    Polymer({
-      is: 'example-component'
-    });
-  </script>
-
-</dom-module>
-
+<dsc-polymer-carousel interval="5">
+  <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
+    <div class="content">
+      <h1>Banner 1</h1>
+      <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
+      <a href="#">View more</a>
+    </div>
+  </section>
+  <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
+    <div class="content">
+      <h1>Banner 2</h1>
+      <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
+      <a href="#">View more</a>
+    </div>
+  </section>
+</dsc-polymer-carousel>
 ```
+
+
 
 ## API

@@ -14,6 +14,14 @@
     "bootstrap",
     "dsc"
   ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "main": "dsc-polymer-carousel.html",
   "repository": {
     "type": "git",
