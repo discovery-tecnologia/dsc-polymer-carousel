@@ -14,7 +14,7 @@
         height: 600px;
         background-position: 50% 50%;
         background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-attachment: var(--background-attachment);
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -23,7 +23,6 @@
         transition: background-image 0.3s linear;
         background-position: center;
         text-align: center;
-        @apply(--dsc-carousel);
       }
 
       .carousel-control{
@@ -37,10 +36,10 @@
         filter: alpha(opacity=50);
         font-size: 20px;
         background-color: rgba(0,0,0,0);
-
         color: #fff;
         text-shadow: 0 1px 2px rgba(0,0,0,.6);
         text-align: center;
+        @apply(--carousel-control);
       }
 
       @media only screen and (min-width: 768px) {
@@ -53,7 +52,6 @@
 
       .carousel-control:focus, .carousel-control:hover {
         outline: 0;
-        color: #fff;
         text-decoration: none;
         opacity: .9;
         filter: alpha(opacity=90);
@@ -65,6 +63,7 @@
         background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
         background-repeat: repeat-x;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+        @apply(--carousel-control-left);
       }
 
       .carousel-control.right {
@@ -75,6 +74,7 @@
         background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);
         background-repeat: repeat-x;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+        @apply(--carousel-control-right);
       }
 
       .carousel-control paper-icon-button {
@@ -102,6 +102,7 @@
         padding-left: 0;
         list-style: none;
         text-align: center;
+        @apply(--carousel-indicators);
       }
 
       .carousel-indicators li {
@@ -115,6 +116,7 @@
         cursor: pointer;
         background-color: #000;
         background-color: rgba(0,0,0,0);
+        @apply(--carousel-indicators-li);
       }
 
       .carousel-indicators .active {
@@ -122,6 +124,7 @@
         width: 12px;
         height: 12px;
         background-color: rgba(255, 255, 255, 0.8);
+        @apply(--carousel-indicators-li-active);
       }
     </style>
 
@@ -159,51 +162,57 @@
           value: 0
         },
         /**
-         * Tempo de intervalo em segundos para alternancia.
+         * Time in seconds for transition.
          */
         interval: {
           type: Number,
-          value: 3
+          value: 5
         },
-         /**
-          * Timer regressivo para controle interno.
-          */
+        /**
+        * Regression timer for internal control.
+        */
         timer: {
           type: Number,
-          value: 3
+          value: 5
         },
+        /**
+         * Current state of the carousel
+         */
         state: {
           type: String,
           value: 'PLAY'
+        },
+        parallax: {
+          type: Boolean
         }
       },
 
       /**
-       * Ao carregar o componente.
+       * On component ready.
        */
       ready: function() {
-        console.log('ready');
-        // obtem todos os banners <section>
+        console.log(this.parallax);
+        // get all banners <section>
         this.itens = this._getSections();
         // se não existir conteudo termina
         if (this.itens.length === 0) {
-            console.log("Nenhuma section para apresentar");
+            console.log("dsc-polymer-carousel: No section to display");
             return;
         }
-        // manipula conteúdo HTML
+        // manipulates HTML content
         for (var i = 0; i < this.itens.length; i++) {
-          // adiciona um id sequencial para facilitar a manipulação futura
+          // adds a sequential id to facilitate future manipulation
           this.itens[i].setAttribute("id", "banner-" + i);
-          // adiciona indicators
+          // add indicators
           var li = document.createElement("li"); // Create a <li> node
           li.setAttribute("data-slide-to", i);   // Add atribute 'data-slide-to'
           this.$$('.carousel-indicators').appendChild(li);
         }
-        // exibe primeiro item
+        // show first item
         this._showItem();
-        // seta timer inicial
+        // set initial timer
         this._resetTimer();
-        // inicia o laço infinito
+        // init loop
         this._initTimer();
       },
 
@@ -218,14 +227,14 @@
       },
 
       /**
-       * Obtem os elementos <section>
+       * Get elements <section>
        */
       _getSections: function() {
         return Polymer.dom(this).querySelectorAll("section");
       },
 
       /**
-       * Oculta o conteúdo de todos os itens.
+       * Hides the contents of all items.
        */
       _hideAllContent: function() {
         for (var i = 0; i < this.itens.length; i++) {
@@ -252,9 +261,9 @@
 
       _initTimer: function() {
         var that = this; // Current object for event handlers;
-        // Timer em laço infinito para troca de banners
+        // Infinite loop
         this.intervalTimer = setInterval(function () {
-          // só realiza alguma ação se o estado for 'PLAY'
+          // Only performs some action if the state is 'PLAY'
           if (that.state === 'PLAY') {
             that.timer--;
             if (that.timer === 0) {
@@ -266,7 +275,7 @@
       },
 
       /**
-       * Exibe próximo item.
+       * Displays next item.
        */
       _nextItem: function() {
         this.currentItem = (this.currentItem === this.itens.length - 1) ? 0 : this.currentItem + 1;
@@ -274,7 +283,7 @@
       },
 
       /**
-       * Exibe item anterior.
+       *Displays previous item.
        */
       _previousItem: function() {
         this.currentItem = (this.currentItem === 0) ? this.itens.length - 1 : this.currentItem - 1;
@@ -282,26 +291,26 @@
       },
 
       /**
-       * Alterna exibição para o item atual pré estabelecido.
+       * Toggles display for current preset item.
        */
       _showItem: function() {
-        // oculta conteudo de todos os itens
+        // Hide contents of all items
         this._hideAllContent();
-        // mostra conteudo do item atual
+        // Show content of the current item
         var currentBanner = Polymer.dom(this).querySelector('#banner-' + this.currentItem);
         currentBanner.style.display = 'block';
-        // altera o background
+        // Change programmable styles
         var srcImg = currentBanner.getAttribute("background");
         this.customStyle['--banner-img'] = 'url(' + srcImg + ')';
-        // seleciona o indicator correspondente
+        this.customStyle['--background-attachment'] = (this.parallax === true) ? 'fixed' : 'scroll';
+
+        // Selects the corresponding indicator
         var indicatorActive = this.$$('.carousel-indicators li.active');
         if (indicatorActive !== null) {
           indicatorActive.className = "";
         }
-        //var newCurrentIndicator = Polymer.dom(this).querySelector('li[data-slide-to="' + this.currentItem + '"]');
         var newCurrentIndicator = this.$$('li[data-slide-to="' + this.currentItem + '"]');
         newCurrentIndicator.className = "active";
-        // atualiza estilos
         Polymer.updateStyles();
       }
     });
