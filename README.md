@@ -12,6 +12,7 @@ Differential:
  * Optional parallax scroll effect
  * Custom content
  * Modern style
+ * Swipe suport
  * Customizable style
 
 ## Demo
@@ -27,21 +28,25 @@ Open browser: http://localhost:8080/components/dsc-polymer-carousel/demo/
 
 ## Usage
 
+Install with:
+
+```
+$ bower i https://github.com/discovery-tecnologia/dsc-polymer-carousel.git --save
+```
+
+Example usage:
+
 ```html
 <dsc-polymer-carousel interval="5" parallax>
   <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-    <div class="content">
-      <h1>Banner 1</h1>
-      <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
-      <a href="#">View more</a>
-    </div>
+    <h1>Banner 1</h1>
+    <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
+    <a href="#">View more</a>
   </section>
   <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-    <div class="content">
-      <h1>Banner 2</h1>
-      <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
-      <a href="#">View more</a>
-    </div>
+    <h1>Banner 2</h1>
+    <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
+    <a href="#">View more</a>
   </section>
 </dsc-polymer-carousel>
 ```
@@ -57,6 +62,7 @@ Open browser: http://localhost:8080/components/dsc-polymer-carousel/demo/
 
 | Custom property |	Description                                        | Default |
 |:----------------|----------------------------------------------------|---------|
+| --carousel-height               | Carousel height                    | 600px   |
 | --carousel-control              | Control arrows                     | {}      |
 | --carousel-control-left         | Left control arrow                 | {}      |
 | --carousel-control-right        | Right control arrow                | {}      |
@@ -70,5 +76,3 @@ The sections should be stylized in the component where they were created.
 
  * test
  * internationalization
- * indicators action
- * background colors
