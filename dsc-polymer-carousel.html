@@ -11,7 +11,7 @@
         position: relative;
         display: block;
         background-image: var(--banner-img);
-        height: var(--carousel-height, 600px);
+        height: var(--carousel-height);
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-attachment: var(--background-attachment);
@@ -135,7 +135,7 @@
         -webkit-user-select: none;
         user-select: none;
         cursor: default;
-        height: var(--carousel-height, 600px);
+        height: var(--carousel-height);
       }
     </style>
 
@@ -158,6 +158,18 @@
       is: 'dsc-polymer-carousel',
 
       properties: {
+
+        /**
+         * Height of the carousel.
+         */
+        height: {
+          type: String,
+          value: '600px',
+          /*notify: true,*/
+          reflectToAttribute: true,
+          observer: '_onHeightChanged'
+        },
+
         /**
          * Current banner index.
          */
@@ -165,6 +177,7 @@
           type: Array,
           value: []
         },
+
         /**
          * Section elements itens.
          */
@@ -172,6 +185,7 @@
           type: Number,
           value: 0
         },
+
         /**
          * Time in seconds for transition.
          */
@@ -179,6 +193,7 @@
           type: Number,
           value: 5
         },
+
         /**
         * Regression timer for internal control.
         */
@@ -186,6 +201,7 @@
           type: Number,
           value: 5
         },
+
         /**
          * Current state of the carousel
          */
@@ -287,16 +303,18 @@
           this.listen(li, 'tap', '_onIndicatorTap');    // Add event 'on-tap'
           this.$$('.carousel-indicators').appendChild(li);
         }
+
+        //this._onHeightChanged();
+        // register events
+        //this.addEventListener('height-changed', this._onHeightChanged());
+
         // show first item
-        this._showItem(1);
+        this._showItem(0);
         // set initial timer
         this._resetTimer();
         // init loop
         this._initTimer();
-        // register events (document scope)
-        //document.addEventListener('carousel-next', this.next());
-        //document.addEventListener('carousel-previous', this.previous());
-        this.addEventListener('carousel-next', this.next());
+        console.log('ready');
       },
 
       /**
@@ -313,6 +331,20 @@
       previous: function() {
         this._resetTimer();
         this._previousItem();
+      },
+
+      _onHeightChanged: function() {
+        /*this.async(function() {
+          console.log('CHANGED: ' + this.height);
+          this.customStyle['--carousel-height'] = this.height;
+          Polymer.updateStyles();
+        }, 300);*/
+
+        // set 300ms delay
+        this.debounce('onHeightChanged', function() {
+          this.customStyle['--carousel-height'] = this.height;
+          Polymer.updateStyles();
+        }, 300);
       },
 
       /**

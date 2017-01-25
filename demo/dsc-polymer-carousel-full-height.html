@@ -1,15 +1,9 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../dsc-polymer-carousel.html">
 
-<dom-module id="dsc-polymer-carousel-demo">
+<dom-module id="dsc-polymer-carousel-full-height">
   <template>
     <style>
-      :host {
-        --dsc-polymer-carousel: {
-            height: 600px;
-        }
-      }
-
       dsc-polymer-carousel h1 {
         font-size: 120px;
         color: rgba(255, 255, 255, 0.8);
@@ -42,7 +36,7 @@
       }
     </style>
 
-    <dsc-polymer-carousel id="carousel" interval="20" parallax>
+    <dsc-polymer-carousel id="carousel" interval="20" parallax height$="{{windowHeight}}">
       <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-1.jpg">
         <h1>Banner 1</h1>
         <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
@@ -98,7 +92,29 @@
 
   <script>
     Polymer({
-      is: "dsc-polymer-carousel-demo"
+      is: "dsc-polymer-carousel-full-height",
+
+      properties: {
+
+        windowHeight: {
+          type: String,
+          reflectToAttribute: true
+        }
+
+      },
+
+      ready: function() {
+        // init height
+        this.windowHeight = window.innerHeight + 'px';
+
+        // register event (window scope)
+        var that = this;
+        window.addEventListener('resize', function() {
+          that.windowHeight =  window.innerHeight + 'px';
+        });
+      }
+
     });
   </script>
+
 </dom-module>
