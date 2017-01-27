@@ -92,14 +92,14 @@
 
   <script>
     Polymer({
-      is: "dsc-polymer-carousel-full-height",
+      is: 'dsc-polymer-carousel-full-height',
 
       properties: {
 
         windowHeight: {
           type: String,
-          reflectToAttribute: true
-        }
+          reflectToAttribute: true,
+        },
 
       },
 
@@ -110,9 +110,9 @@
         // register event (window scope)
         var that = this;
         window.addEventListener('resize', function() {
-          that.windowHeight =  window.innerHeight + 'px';
+          that.windowHeight = window.innerHeight + 'px';
         });
-      }
+      },
 
     });
   </script>

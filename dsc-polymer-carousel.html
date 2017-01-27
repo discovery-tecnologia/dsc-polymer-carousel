@@ -165,9 +165,8 @@
         height: {
           type: String,
           value: '600px',
-          /*notify: true,*/
           reflectToAttribute: true,
-          observer: '_onHeightChanged'
+          observer: '_onHeightChanged',
         },
 
         /**
@@ -175,7 +174,7 @@
          */
         itens: {
           type: Array,
-          value: []
+          value: [],
         },
 
         /**
@@ -183,7 +182,7 @@
          */
         currentItem: {
           type: Number,
-          value: 0
+          value: 0,
         },
 
         /**
@@ -191,7 +190,7 @@
          */
         interval: {
           type: Number,
-          value: 5
+          value: 5,
         },
 
         /**
@@ -199,7 +198,7 @@
         */
         timer: {
           type: Number,
-          value: 5
+          value: 5,
         },
 
         /**
@@ -207,14 +206,14 @@
          */
         state: {
           type: String,
-          value: 'PLAY'
+          value: 'PLAY',
         },
 
         /**
          * Parallax effect flag
          */
         parallax: {
-          type: Boolean
+          type: Boolean,
         },
 
         /**
@@ -224,7 +223,7 @@
          */
         swipeStyle: {
         type: String,
-        value: 'horizontal'
+        value: 'horizontal',
         },
 
         /**
@@ -232,7 +231,7 @@
          */
         disabled: {
           type: Boolean,
-          value: false
+          value: false,
         },
 
         /**
@@ -243,7 +242,7 @@
          */
         widthRatio: {
         type: Number,
-        value: 3
+        value: 3,
         },
 
         /**
@@ -254,7 +253,7 @@
          */
         opacityRate: {
         type: Number,
-        value: 0.2
+        value: 0.2,
         },
 
         /**
@@ -262,8 +261,9 @@
          */
         transition: {
           type: String,
-          value: '300ms cubic-bezier(0.4, 0.0, 1, 1)'
-        }
+          value: '300ms cubic-bezier(0.4, 0.0, 1, 1)',
+        },
+
       },
 
       attached: function() {
@@ -272,8 +272,8 @@
               for (var i = 0; i < mutations.addedNodes.length; i++) {
                 this._addListeners(mutations.addedNodes[i]);
               }
-              for (var i = 0; i < mutations.removedNodes.length; i++) {
-                this._removeListeners(mutations.removedNodes[i]);
+              for (var j = 0; j < mutations.removedNodes.length; j++) {
+                this._removeListeners(mutations.removedNodes[j]);
               }
             }.bind(this));
       },
@@ -288,25 +288,21 @@
         this._direction = '';
         // get all banners <section>
         this.itens = this._getSections();
-        // se não existir conteudo termina
+        // stop if empty
         if (this.itens.length === 0) {
-            console.log("dsc-polymer-carousel: No section to display");
+            // console.log("dsc-polymer-carousel: No section to display");
             return;
         }
         // manipulates HTML content
         for (var i = 0; i < this.itens.length; i++) {
           // adds a sequential id to facilitate future manipulation
-          this.itens[i].setAttribute("id", "banner-" + i);
+          this.itens[i].setAttribute('id', 'banner-' + i);
           // add indicators
-          var li = document.createElement("li");        // Create a <li> node
-          li.setAttribute("data-slide-to", i);          // Add atribute 'data-slide-to'
-          this.listen(li, 'tap', '_onIndicatorTap');    // Add event 'on-tap'
+          var li = document.createElement('li'); // Create a <li> node
+          li.setAttribute('data-slide-to', i); // Add atribute 'data-slide-to'
+          this.listen(li, 'tap', '_onIndicatorTap'); // Add event 'on-tap'
           this.$$('.carousel-indicators').appendChild(li);
         }
-
-        //this._onHeightChanged();
-        // register events
-        //this.addEventListener('height-changed', this._onHeightChanged());
 
         // show first item
         this._showItem(0);
@@ -314,7 +310,6 @@
         this._resetTimer();
         // init loop
         this._initTimer();
-        console.log('ready');
       },
 
       /**
@@ -334,12 +329,6 @@
       },
 
       _onHeightChanged: function() {
-        /*this.async(function() {
-          console.log('CHANGED: ' + this.height);
-          this.customStyle['--carousel-height'] = this.height;
-          Polymer.updateStyles();
-        }, 300);*/
-
         // set 300ms delay
         this.debounce('onHeightChanged', function() {
           this.customStyle['--carousel-height'] = this.height;
@@ -349,6 +338,10 @@
 
       /**
        * On click or tap indicators.
+       *
+       * @param {object} e Event object.
+       *
+       * @return {undefined}
        */
       _onIndicatorTap: function(e) {
         var index = parseInt(e.target.getAttribute('data-slide-to'));
@@ -359,9 +352,11 @@
 
       /**
        * Get elements <section>.
+       *
+       * @return {object}
        */
       _getSections: function() {
-        return Polymer.dom(this).querySelectorAll("section");
+        return Polymer.dom(this).querySelectorAll('section');
       },
 
       /**
@@ -393,7 +388,7 @@
       _initTimer: function() {
         var that = this; // Current object for event handlers;
         // Infinite loop
-        this.intervalTimer = setInterval(function () {
+        this.intervalTimer = setInterval(function() {
           // Only performs some action if the state is 'PLAY'
           if (that.state === 'PLAY') {
             that.timer--;
@@ -409,7 +404,9 @@
        * Displays next item.
        */
       _nextItem: function() {
-        this.currentItem = (this.currentItem === this.itens.length - 1) ? 0 : this.currentItem + 1;
+        this.currentItem = (this.currentItem === this.itens.length - 1)
+          ? 0
+          : this.currentItem + 1;
         this._showItem(this.currentItem);
       },
 
@@ -417,12 +414,18 @@
        *Displays previous item.
        */
       _previousItem: function() {
-        this.currentItem = (this.currentItem === 0) ? this.itens.length - 1 : this.currentItem - 1;
+        this.currentItem = (this.currentItem === 0)
+          ? this.itens.length - 1
+          : this.currentItem - 1;
         this._showItem(this.currentItem);
       },
 
       /**
        * Toggles display for current preset item.
+       *
+       * @param {Number} index Banner index.
+       *
+       * @return {undefined}
        */
       _showItem: function(index) {
         // update current
@@ -433,24 +436,29 @@
         var currentBanner = Polymer.dom(this).querySelector('#banner-' + index);
         currentBanner.style.display = 'block';
         // Change programmable styles
-        var srcImg = currentBanner.getAttribute("background");
+        var srcImg = currentBanner.getAttribute('background');
         this.customStyle['--banner-img'] = 'url(' + srcImg + ')';
-        this.customStyle['--background-attachment'] = (this.parallax === true) ? 'fixed' : 'scroll';
+        this.customStyle['--background-attachment'] = (this.parallax === true)
+          ? 'fixed'
+          : 'scroll';
 
         // Selects the corresponding indicator
         var indicatorActive = this.$$('.carousel-indicators li.active');
         if (indicatorActive !== null) {
-          indicatorActive.className = "";
+          indicatorActive.className = '';
         }
-        var newCurrentIndicator = this.$$('li[data-slide-to="' + this.currentItem + '"]');
-        newCurrentIndicator.className = "active";
+        var newCurrentIndicator =
+          this.$$('li[data-slide-to="' + this.currentItem + '"]');
+        newCurrentIndicator.className = 'active';
 
         Polymer.updateStyles();
       },
 
       _addListeners: function(node) {
-        if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.COMMENT_NODE)
+        if (node.nodeType === Node.TEXT_NODE ||
+          node.nodeType === Node.COMMENT_NODE) {
           return;
+        }
         // Set up the animation.
         node.style.transitionProperty = this._transitionProperty;
         node.style.transition = this.transition;
@@ -517,7 +525,8 @@
         var opaqueDistance = Math.max(0, Math.abs(x) - this._nodeWidth * this.opacityRate);
         var opacity = Math.max(0, (totalDistance - opaqueDistance) / totalDistance);
         target.style.opacity = opacity;
-        var translate, rotate;
+        var translate;
+        var rotate;
         if (this.swipeStyle === 'horizontal') {
           translate = 'translate3d(' + x + 'px,' + 0 + 'px,0)';
           rotate = '';
@@ -550,12 +559,16 @@
       _onTransitionEnd: function(event) {
         var target = event.currentTarget;
         if (this._swipeComplete && event.propertyName === 'opacity') {
-          this.fire('iron-swipe',
-              { direction: this._direction > 0 ? 'right' : 'left',
-                target:target
-              });
+          this.fire(
+            'iron-swipe',
+            {
+              direction: this._direction > 0 ? 'right' : 'left',
+              target: target,
+            }
+          );
         }
-      }
+      },
+
     });
   </script>
 
