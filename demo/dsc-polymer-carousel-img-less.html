@@ -4,48 +4,52 @@
 <dom-module id="dsc-polymer-carousel-img-less">
   <template>
     <style>
-       .banner-1 {
-         background-color: red;
-       }
+    dsc-polymer-carousel {
+      text-align: center;
+    }
 
-       .banner-2 {
-         background-color: green;
-       }
+    .banner-1 {
+      background-color: red;
+    }
 
-       .banner-3 {
-         background-color: blue;
-       }
+    .banner-2 {
+      background-color: green;
+    }
 
-      dsc-polymer-carousel h1 {
-        font-size: 120px;
-        color: rgba(255, 255, 255, 0.8);
-        font-weight: 700;
-        /*text-transform: uppercase;*/
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        margin-top: 0;
-        margin-bottom: 0;
-      }
+    .banner-3 {
+      background-color: blue;
+    }
 
-      dsc-polymer-carousel p {
-        font-size: 30px;
-        color: rgba(255, 255, 255, 0.8);
-        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
+    dsc-polymer-carousel h1 {
+      font-size: 120px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 700;
+      /*text-transform: uppercase;*/
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
 
-      dsc-polymer-carousel a {
-        display: inline-block;
-        margin: 0 auto;
-        padding: 5px 15px;
-        color: #fff;
-        border: 3px solid rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 20px;
-      }
+    dsc-polymer-carousel p {
+      font-size: 30px;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
 
-      iron-icon {
-        color: #fff;
-      }
+    dsc-polymer-carousel a {
+      display: inline-block;
+      margin: 0 auto;
+      padding: 5px 15px;
+      color: #fff;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+
+    iron-icon {
+      color: #fff;
+    }
     </style>
 
     <dsc-polymer-carousel id="carousel" interval="20" parallax>
@@ -103,8 +107,8 @@
   </template>
 
   <script>
-    Polymer({
-      is: 'dsc-polymer-carousel-img-less',
-    });
+  Polymer({
+    is: 'dsc-polymer-carousel-img-less',
+  });
   </script>
 </dom-module>
