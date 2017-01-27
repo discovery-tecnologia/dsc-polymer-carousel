@@ -75,8 +75,3 @@ Content should be section tags. The optional "background" attribute of the secti
 | --carousel-indicators-li-active | Bottom indicator active item style | {}      |
 
 The sections should be stylized in the component where they were created.
-
-## Todo
-
- * test
- * internationalization
