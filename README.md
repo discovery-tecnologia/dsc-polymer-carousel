@@ -1,5 +1,7 @@
 # dsc-polymer-carousel
 
+[![Build Status](https://travis-ci.org/discovery-tecnologia/dsc-polymer-carousel.svg?branch=master)](http://travis-ci.org/#!/discovery-tecnologia/dsc-polymer-carousel)
+
 A slideshow polymer component for cycling through elements, like a carousel. Similar to the carousel component of the bootstrap.
 
 Commonly used at the top of the homepage of sites.
