@@ -45,9 +45,7 @@
   </test-fixture>
 
   <script>
-
     suite('<dsc-polymer-carousel>', function() {
-
       var container;
       var indicators;
 
@@ -57,9 +55,9 @@
       });
 
       test('Content sections count', function() {
-        //container.setAttribute('show-buttons', 'true');
-        //expect(container.showButtons).to.be.equal(true);
-        //expect(container.querySelector('.buttons').attributes).to.have.ownProperty('visible');
+        // container.setAttribute('show-buttons', 'true');
+        // expect(container.showButtons).to.be.equal(true);
+        // expect(container.querySelector('.buttons').attributes).to.have.ownProperty('visible');
         expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(3);
       });
 
@@ -70,7 +68,6 @@
       test('Verify active Indicator', function() {
           expect(Polymer.dom(indicators).queryDistributedElements('li.active').length).to.be.equal(1);
       });
-
     });
   </script>
 </body>
