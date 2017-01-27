@@ -60,6 +60,8 @@ Example usage:
 | interval       | Time in seconds for transition | 5             |
 | parallax       | Active parallax scroll effect  | false         |
 
+Content should be section tags. The optional "background" attribute of the section defines the background image.
+
 ## Styling
 
 | Custom property |	Description                                        | Default |
