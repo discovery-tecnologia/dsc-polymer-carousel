@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>dsc-polymer-container tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+
+  <link rel="import" href="../dsc-polymer-carousel.html">
+  <link rel="import" href="test-element.html">
+
+</head>
+<style>
+  div {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+</style>
+<body>
+
+  <test-fixture id="basic">
+    <template>
+      <dsc-polymer-carousel id="carousel" interval="20" parallax>
+        <section class="banner-1">
+          <h1>Banner 1</h1>
+          <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
+          <a href="#">View more</a>
+        </section>
+        <section class="banner-2">
+          <h1>Banner 2</h1>
+          <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
+          <a href="#">View more</a>
+        </section>
+        <section class="banner-3">
+          <h1>Banner 3</h1>
+          <p>Aenean vitae dolor ultricies, pulvinar tortor eget, rhoncus odio. Nam nec eleifend augue.</p>
+          <a href="#">View more</a>
+        </section>
+      </dsc-polymer-carousel>
+    </template>
+  </test-fixture>
+
+  <script>
+
+    suite('<dsc-polymer-carousel>', function() {
+
+      var container;
+      var indicators;
+
+      setup(function() {
+        container = fixture('basic');
+        indicators = container.querySelector('.carousel-indicators');
+      });
+
+      test('Content sections count', function() {
+        //container.setAttribute('show-buttons', 'true');
+        //expect(container.showButtons).to.be.equal(true);
+        //expect(container.querySelector('.buttons').attributes).to.have.ownProperty('visible');
+        expect(Polymer.dom(container).queryDistributedElements('*').length).to.be.equal(3);
+      });
+
+      test('Indicator counting', function() {
+          expect(Polymer.dom(indicators).queryDistributedElements('li').length).to.be.equal(3);
+      });
+
+      test('Verify active Indicator', function() {
+          expect(Polymer.dom(indicators).queryDistributedElements('li.active').length).to.be.equal(1);
+      });
+
+    });
+  </script>
+</body>
+</html>
