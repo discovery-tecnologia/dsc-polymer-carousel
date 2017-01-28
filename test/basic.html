@@ -7,7 +7,6 @@
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
-  <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
   <link rel="import" href="../dsc-polymer-carousel.html">
 
@@ -61,11 +60,11 @@
       });
 
       test('Indicator counting', function() {
-          expect(Polymer.dom(indicators).queryDistributedElements('li').length).to.be.equal(3);
+        expect(Polymer.dom(indicators).queryDistributedElements('li').length).to.be.equal(3);
       });
 
       test('Verify active Indicator', function() {
-          expect(Polymer.dom(indicators).queryDistributedElements('li.active').length).to.be.equal(1);
+        expect(Polymer.dom(indicators).queryDistributedElements('li.active').length).to.be.equal(1);
       });
     });
   </script>

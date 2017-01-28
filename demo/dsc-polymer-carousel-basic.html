@@ -8,6 +8,18 @@
       text-align: center;
     }
 
+    .banner-container {
+      /* size equal parent */
+      display: inline-block;
+      height: 85%;
+      width: 100%;
+      /* centralize content */
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     dsc-polymer-carousel h1 {
       font-size: 120px;
       color: rgba(255, 255, 255, 0.8);
@@ -16,12 +28,15 @@
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       margin-top: 0;
       margin-bottom: 0;
+      width: 100%;
     }
 
     dsc-polymer-carousel p {
       font-size: 30px;
       color: rgba(255, 255, 255, 0.8);
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin: 0;
     }
 
     dsc-polymer-carousel a {
@@ -42,19 +57,25 @@
 
     <dsc-polymer-carousel id="carousel" interval="20" parallax>
       <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-1.jpg">
-        <h1>Banner 1</h1>
-        <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
-        <a href="#">View more</a>
+        <div class="banner-container">
+          <h1>Banner 1</h1>
+          <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
+          <a href="#">View more</a>
+        </div>
       </section>
       <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-        <h1>Banner 2</h1>
-        <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
-        <a href="#">View more</a>
+        <div class="banner-container">
+          <h1>Banner 2</h1>
+          <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
+          <a href="#">View more</a>
+        </div>
       </section>
       <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-        <h1>Banner 3</h1>
-        <p>Aenean vitae dolor ultricies, pulvinar tortor eget, rhoncus odio. Nam nec eleifend augue.</p>
-        <a href="#">View more</a>
+        <div class="banner-container">
+          <h1>Banner 3</h1>
+          <p>Aenean vitae dolor ultricies, pulvinar tortor eget, rhoncus odio. Nam nec eleifend augue.</p>
+          <a href="#">View more</a>
+        </div>
       </section>
     </dsc-polymer-carousel>
 
