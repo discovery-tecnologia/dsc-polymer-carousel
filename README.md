@@ -20,11 +20,12 @@ Differential:
 ## Demo
 
 ```
-git clone https://github.com/discovery-tecnologia/dsc-polymer-carousel.git
-cd dsc-polymer-carousel
-bower install
-node install -g polymer-cli
-polymer serve
+$ git clone https://github.com/discovery-tecnologia/dsc-polymer-carousel.git
+$ cd dsc-polymer-carousel
+$ npm install
+$ bower install
+$ node install -g polymer-cli
+$ polymer serve
 ```
 Open browser: http://localhost:8080/components/dsc-polymer-carousel/demo/
 
