@@ -33,7 +33,7 @@ Open browser: http://localhost:8080/components/dsc-polymer-carousel/demo/
 Install with:
 
 ```
-$ bower i https://github.com/discovery-tecnologia/dsc-polymer-carousel.git --save
+$ bower i dsc-polymer-carousel --save
 ```
 
 Example usage:
