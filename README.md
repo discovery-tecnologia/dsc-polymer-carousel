@@ -1,4 +1,4 @@
-# dsc-polymer-carousel
+# &#60;dsc-polymer-carousel&#62;
 
 [![Build Status](https://travis-ci.org/discovery-tecnologia/dsc-polymer-carousel.svg?branch=master)](http://travis-ci.org/#!/discovery-tecnologia/dsc-polymer-carousel)
 
@@ -23,7 +23,6 @@ Differential:
 $ git clone https://github.com/discovery-tecnologia/dsc-polymer-carousel.git
 $ cd dsc-polymer-carousel
 $ npm install
-$ bower install
 $ node install -g polymer-cli
 $ polymer serve
 ```
@@ -76,3 +75,11 @@ Content should be section tags. The optional "background" attribute of the secti
 | --carousel-indicators-li-active | Bottom indicator active item style | {}      |
 
 The sections should be stylized in the component where they were created.
+
+## Test
+
+Check sintax and execute selenium tests.
+
+```
+$ npm test
+```
