@@ -1,6 +1,8 @@
 # &#60;dsc-polymer-carousel&#62;
 
 [![Build Status](https://travis-ci.org/discovery-tecnologia/dsc-polymer-carousel.svg?branch=master)](http://travis-ci.org/#!/discovery-tecnologia/dsc-polymer-carousel)
+![Bower version](https://img.shields.io/bower/v/dsc-polymer-carousel.svg)
+![](https://img.shields.io/pypi/l/Django.svg)
 
 A slideshow polymer component for cycling through elements, like a carousel. Similar to the carousel component of the bootstrap.
 
