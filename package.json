@@ -1,5 +1,6 @@
 {
   "name": "dsc-polymer-carousel",
+  "description": "A slideshow polymer component for cycling through elements, like a carousel. Similar to the carousel component of the bootstrap",
   "version": "0.0.7",
   "license": "MIT",
   "keywords": [
