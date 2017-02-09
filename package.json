@@ -1,6 +1,16 @@
 {
   "name": "dsc-polymer-carousel",
+  "version": "0.0.6",
   "license": "MIT",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "Discovery",
+    "carousel",
+    "bootstrap",
+    "dsc"
+  ],
   "devDependencies": {
     "bower": "latest",
     "eslint": "^3.12.0",
