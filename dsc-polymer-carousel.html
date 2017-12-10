@@ -44,11 +44,9 @@
       }
 
       @media only screen and (min-width: 768px) {
-
         .carousel-control {
           display: block;
         }
-
       }
 
       .carousel-control:focus, .carousel-control:hover {
@@ -281,6 +279,14 @@
        * On component ready.
        */
       ready: function() {
+        // wait 0.8s for reder dom-repeat
+        // TODO: reimplement in a more elegant way in the future
+        this.async(function() {
+          this.start();
+        }, 800);
+      },
+
+      start: function() {
         // set properties
         this._transitionProperty = 'opacity, transform';
         this._swipeComplete = false;
@@ -355,7 +361,9 @@
        * @return {object}
        */
       _getSections: function() {
-        return Polymer.dom(this).querySelectorAll('section');
+        var sections = Polymer.dom(this).querySelectorAll('section');
+        console.log(sections);
+        return sections;
       },
 
       /**

@@ -56,27 +56,15 @@
     </style>
 
     <dsc-polymer-carousel id="carousel" interval="20" parallax>
-      <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-1.jpg">
-        <div class="banner-container">
-          <h1>Banner 1</h1>
-          <p>Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.</p>
-          <a href="#">View more</a>
-        </div>
-      </section>
-      <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-        <div class="banner-container">
-          <h1>Banner 2</h1>
-          <p>In aliquam orci ligula, nec tempus metus laoreet eget.<br>Proin ornare nibh condimentum leo elementum, at hendrerit turpis ultrices.</p>
-          <a href="#">View more</a>
-        </div>
-      </section>
-      <section background="http://localhost:8080/components/dsc-polymer-carousel/demo/images/slide-2.jpg">
-        <div class="banner-container">
-          <h1>Banner 3</h1>
-          <p>Aenean vitae dolor ultricies, pulvinar tortor eget, rhoncus odio. Nam nec eleifend augue.</p>
-          <a href="#">View more</a>
-        </div>
-      </section>
+        <template id="itemsRepeat" is="dom-repeat" items="[[data]]">
+          <section background$="[[item.image]]">
+            <div class="banner-container">
+              <h1 class="font-cursive">[[item.title]]</h1>
+              <p class="font-secondary">[[item.description]]</p>
+              <a href="#">[[item.linkLabel]]</a>
+            </div>
+          </section>
+        </template>
     </dsc-polymer-carousel>
 
     <section id="articles">
@@ -118,6 +106,35 @@
   <script>
   Polymer({
     is: 'dsc-polymer-carousel-basic',
+
+    properties: {
+      data: {
+        type: Array,
+        value: [
+          {
+            image: 'http://localhost:8081/components/dsc-polymer-carousel/demo/images/slide-1.jpg',
+            title: 'Banner1',
+            description: 'Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.',
+            link: '//google.com.br',
+            linkLabel: 'View more'
+          },
+          {
+            image: 'http://localhost:8081/components/dsc-polymer-carousel/demo/images/slide-2.jpg',
+            title: 'Banner2',
+            description: 'Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.',
+            link: '//google.com.br',
+            linkLabel: 'View more'
+          },
+          {
+            image: 'http://localhost:8081/components/dsc-polymer-carousel/demo/images/slide-3.jpg',
+            title: 'Banner3',
+            description: 'Nam mattis porta mattis. Donec et neque scelerisque, pretium arcu sed, vehicula diam. Nam a arcu eu sapien porta<br>posuere id id arcu. Fusce rhoncus erat ut nisl pharetra.',
+            link: '//google.com.br',
+            linkLabel: 'View more'
+          }
+        ],
+      }
+    },
   });
   </script>
 </dom-module>
